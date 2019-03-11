@@ -19,7 +19,6 @@ WORKDIR /var/lib/jenkins/workspace/test
 COPY ./ .
 
 # Define working directory.
-RUN mvn install && \
-   cd /root/.m2/repository/com/howtodoinjava/demo/springbootdemo/0.0.1-SNAPSHOT/
+RUN mvn install
 
-ENTRYPOINT ["java", "-jar", "springbootdemo-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/root/.m2/repository/com/howtodoinjava/demo/springbootdemo/0.0.1-SNAPSHOT/springbootdemo-0.0.1-SNAPSHOT.jar"]
