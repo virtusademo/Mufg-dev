@@ -19,8 +19,7 @@ WORKDIR /var/lib/jenkins/workspace/test
 
 # Define working directory.
 RUN pwd && \
-   ls -al && \
-   mvn install
+   ls -al
 
 # Define default command.
 CMD ["bash"]
