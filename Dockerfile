@@ -15,8 +15,8 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_HOME=/usr/share/maven
 
-WORKDIR /var/lib/jenkins/workspace/test
-COPY ./ .
+WORKDIR /data
+COPY /var/lib/jenkins/workspace/test/ .
 
 # Define working directory.
 RUN pwd && \
