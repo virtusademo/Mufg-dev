@@ -1,0 +1,53 @@
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  name: springbootdemo-mufg
+  namespace: mufg
+  labels:
+    app: springbootdemo-mufg
+spec: 
+  ports: 
+    - 
+      name: http
+      port: 8082
+      protocol: TCP
+      targetPort: http
+  selector: 
+    app: springbootdemo-mufg
+  type: ClusterIP
+
+
+---
+
+
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: springbootdemo-mufg-deployment
+  namespace: mufg
+  labels:
+    app: springbootdemo-mufg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springbootdemo-mufg
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: springbootdemo-mufg
+    spec:
+      containers:
+      - name: springbootdemo-mufg
+        image: registry.hub.docker.com/virtusademo/mufg-java
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8082
+            name: http
+            protocol: TCP
