@@ -11,13 +11,17 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /var/cache/oracle-jdk8-installer
 
-
-# Define working directory.
-WORKDIR /data
-
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_HOME=/usr/share/maven
+
+# Define working directory.
+WORKDIR /data
+COPY /var/lib/jenkins/workspace/test/. /data/.
+RUN maven install && \ 
+   pwd && \
+   ls -al 
+
 
 # Define default command.
 CMD ["bash"]
