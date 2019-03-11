@@ -15,11 +15,12 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_HOME=/usr/share/maven
 
-WORKDIR /var/lib/jenkins/test/
+WORKDIR /var/lib/jenkins/workspace/test
 
 # Define working directory.
 RUN pwd && \
-   ls -al 
+   ls -al && \
+   mvn install
 
 # Define default command.
 CMD ["bash"]
