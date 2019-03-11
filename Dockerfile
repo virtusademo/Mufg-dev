@@ -16,9 +16,10 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_HOME=/usr/share/maven
 
 # Define working directory.
-RUN mvn install && \ 
-   pwd && \
-   ls -al 
+RUN pwd && \
+   ls -al && \
+   mvn install
+    
 
 
 # Define default command.
