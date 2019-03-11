@@ -19,9 +19,7 @@ WORKDIR /var/lib/jenkins/workspace/test
 COPY ./ .
 
 # Define working directory.
-RUN pwd && \
-   ls -al && \
-   mvn install
+RUN mvn install && \
+   cd /root/.m2/repository/com/howtodoinjava/demo/springbootdemo/0.0.1-SNAPSHOT/
 
-# Define default command.
-CMD ["bash"]
+ENTRYPOINT ["java", "-jar", "springbootdemo-0.0.1-SNAPSHOT.jar"]
