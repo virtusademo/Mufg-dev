@@ -19,7 +19,7 @@ WORKDIR /data
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_HOME=/usr/share/maven
 
-RUN mvn -version
+RUN mvn install
 
 # Define default command.
 CMD ["bash"]
