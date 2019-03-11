@@ -51,3 +51,29 @@ spec:
           - containerPort: 8080
             name: http
             protocol: TCP
+
+---
+
+apiVersion:  extensions/v1beta1
+kind: Ingress
+metadata:
+  name: springbootdemo-mufg
+  namespace: mufg
+  labels:
+    app: springbootdemo-mufg
+  annotations:
+    # zalando.org/skipper-predicate: Source("34.218.139.139/32", "35.163.194.239/32")
+spec:
+  rules:
+    - host: springbootdemo-mufg.apps.xlabsdfs.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: springbootdemo-mufg
+              servicePort: http
+          - path: /*
+            backend:
+              serviceName: springbootdemo-mufg
+              servicePort: http
+
