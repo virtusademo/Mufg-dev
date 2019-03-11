@@ -10,7 +10,7 @@ spec:
   ports: 
     - 
       name: http
-      port: 8082
+      port: 8080
       protocol: TCP
       targetPort: http
   selector: 
@@ -48,6 +48,6 @@ spec:
         image: registry.hub.docker.com/virtusademo/mufg-java
         imagePullPolicy: Always
         ports:
-          - containerPort: 8082
+          - containerPort: 8080
             name: http
             protocol: TCP
